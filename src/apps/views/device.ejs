@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('head') -%>
+		<link rel="stylesheet" href="/static/css/parking-list.css" />
+	</head>
+    <body>
+        <%- include('logout'); -%>
+
+        <header class="header">
+        </header>
+        <div class="content">
+        </div>
+        <a href="/" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div href="/" class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý thiết bị</span>
+        </div>
+
+        <div class="title">Danh sách thiết bị</div>
+        <a href="/device/add" class="btn btn-success btn-add">
+            Thêm mới +
+        </a>
+        <div class="tbl">
+            <table data-toolbar="#toolbar" data-toggle="table">
+                <thead>
+                    <tr>
+                        <th data-sortable="true">STT</th>
+                        <th data-sortable="true">ID</th>
+                        <th data-sortable="true">Tên thiết bị</th>
+                        <th data-sortable="true">Bãi xe hoạt động</th>
+                        <th data-sortable="true">Sửa</th>
+                        <th data-sortable="true">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let i = 0 %> <% for ( let device of devices) {%>
+                        <tr>
+                            <td><%= ++i %></td>
+                            <td><%= device.id%></td>
+                            <td><%= device.name %></td>
+                            <%if(device.isActivate === true) {%>
+                            <td><%=device.parkId.address%></td>
+                            <%}%>
+                            <%if(device.isActivate === false) {%>
+                            <td>Thiết bị hiện không hoạt động</td>
+                            <%}%>
+                            <td><a href="/device/edit/<%= device._id%>" class="action">Edit</a></td>
+                            <td><a href="/device/delete/<%= device._id%>" class="action">Delete</a></td>
+                        </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <a href="/device/export" class="export-ex">
+            Xuất file Excel
+        </a>
+        </div>
+    </body>
+</html>

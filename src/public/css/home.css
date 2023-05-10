@@ -1,0 +1,108 @@
+*{
+	margin:0;
+	padding:0;
+	font-family: Inter;
+	color:#333;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%; /* tương đương 10px */
+    line-height: 1.6rem;
+}
+
+.header {
+    width: 100%;
+    height: 240px;
+}
+#logo1 {
+    width: 320px;
+    height: 320px;
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 40%;
+}
+.content {
+    width: 100%;
+    height: 400px;
+    background-color: #318EE3;
+}
+.text {
+    text-align: center;
+    padding-top: 300px;
+    font-weight: 700;
+    font-size: 4.8rem;
+    line-height: 5.8rem;
+    color: #fff;
+}
+.list {
+    margin-top: 30px;
+}
+.nav-item a:hover {
+    color: #5a5858;
+}
+.nav-item a{
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 3.9rem;
+    /* identical to box height */
+    color: #000000;
+}
+/* BREAK POINT */
+/*
+    PC >= 1024px
+    Tablet: >=740px & < 1024px
+    Mobile: <740px
+ */
+ 
+ /* Mobile and Tablet */
+ @media (max-width: 1023px) {
+    .header {
+        height: 430px;
+    }
+    #logo1 {
+        width: 320px;
+        height: 320px;
+        margin-top: 20%;
+        margin-left: 40%;
+    }
+    .content {
+        height: 480px;
+    }
+    .text {
+        padding-top: 240px;
+        font-size: 4.0rem;
+        line-height: 5.0rem;
+    }
+    
+    .nav-item a{
+        font-size: 2.8rem;
+        line-height: 3.4rem;
+    }
+ }
+ 
+ /* Mobile */
+ @media (max-width: 739px) {
+    .header {
+        height: 300px;
+    }
+    #logo1 {
+        width: 300px;
+        height: 300px;
+        margin-top: 160px;
+        margin-left: 90px;
+    }
+    .content {
+        height: 380px;
+    }
+    .text {
+        padding-top: 220px;
+        font-size: 2.6rem;
+        line-height: 4.0rem;
+    }
+    
+    .nav-item a{
+        font-size: 2.0rem;
+        line-height: 3.6rem;
+    }
+ }

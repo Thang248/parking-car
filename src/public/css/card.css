@@ -1,0 +1,500 @@
+*{
+	margin:0;
+	padding:0;
+	font-family: Inter;
+	color:#333;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%; /* tương đương 10px */
+    line-height: 1.6rem;
+}
+.header {
+    width: 100%;
+    height: 523px;
+}
+.content {
+    width: 100%;
+    height: 628px;
+    background-color: #318EE3;
+}
+a.control {
+    position: absolute;
+    width: 100px;
+    height: 29px;
+    left: 50px;
+    top: 40px;
+
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #000;
+    text-decoration: none;
+}
+a.control:hover {
+    color: #424141;
+}
+div.control {
+    position: absolute;
+    height: 29px;
+    left: 50px;
+    top: 90px;
+
+    font-weight: 700;
+    font-size: 24px;
+    color: #000000;
+}
+.symbol {
+    font-size: 2.4rem;
+    font-weight: 300;
+}
+.desc {
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #FF6666;
+}
+.title {
+    position: absolute;
+    width: 474px;
+    height: 58px;
+    left: 50px;
+    top: 150px;
+    font-weight: 700;
+    font-size: 4.8rem;
+    
+    color: #000000;
+}
+.form-del {
+    position: absolute;
+    width: 463px;
+    height: 211px;
+    left: 750px;
+    top: 243px;
+    background: #888383;
+    border-radius: 10px;
+}
+.text-del {
+    font-weight: 700;
+    font-size: 24px;
+    margin-left: 142px;
+    margin-top: 18px;
+    color: #FFFFFF;
+}
+.id-del {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+    position: absolute;
+    top:77px;
+    left: 51px;
+}
+.del-input {
+    width: 245px;
+    height: 39px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    position: absolute;
+    top: 72px;
+    left: 150px;
+    font-size: 22px;
+    padding: 5px 10px;
+    font-weight: 500;
+}
+.btn-del {
+    width: 160px;
+    height: 44px;
+    background: #C61F1F;
+    border-radius: 15px;
+    position: absolute;
+    top: 138px;
+    left: 150px;
+    font-size: 22px;
+}
+
+.form-add{
+    position: absolute;
+    width: 496px;
+    height: 390px;
+    left: 125px;
+    top: 237px;
+
+    background: #888383;
+    border-radius: 10px;
+}
+.form-group1 {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.user-text {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #FFFFFF;
+}
+.form-control1 {
+    width: 245px;
+    height: 39px;
+    margin-right: 40px;
+    float: right;
+    background: #FFFFFF;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 5px 10px;
+}
+.btn-add {
+    width: 160px;
+    height: 44px;
+    background: #318EE3;
+    border-radius: 15px;
+    margin-left: 173px;
+    margin-top: 14px;
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 600;
+}
+.btn-add:hover {
+    background-color: #1075d4;
+}
+.tbl {
+    position: absolute;
+    width: 1239px;
+    height: 183px;
+    left: 87px;
+    top: 700px;
+    
+}
+/* Table */
+table{
+    border:1px solid black;
+    width: 1239px;
+    text-align: center;
+}
+th{
+    border:1px solid black;
+}
+td{
+    border:1px solid black;
+    background-color: #333;
+}
+thead {
+    background-color: #C61F1F;
+    
+}
+thead tr th {
+    font-weight: 500;
+    font-size: 2.6rem;
+    color: #FFFFFF;
+}
+tbody tr td {
+    font-weight: 400;
+    font-size: 2.6rem;
+
+    color: #ccc;
+}
+.export-ex {
+    width: 258px;
+    height: 63px;
+    position: absolute;
+    top: 540px;
+    left: 850px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 32px;
+    color: #000000;
+    background-color: #60FE46;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 63px;
+}
+.export-ex:hover {
+    background-color: #38cc22;
+    text-decoration: none;
+    color: #333;
+}
+/* BREAK POINT */
+/*
+    PC >= 1024px
+    Tablet: >=740px & < 1024px
+    Mobile: <740px
+ */
+ 
+ /* Mobile and Tablet */
+ @media (max-width: 1023px) {
+    .header {
+        height: 500px;
+    }
+    .content {
+        height: 540px;
+    }
+    a.control {
+        width: 100px;
+        height: 29px;
+        left: 50px;
+        top: 40px;
+    
+        font-weight: 700;
+        font-size: 2.2rem;
+    }
+    div.control {
+        height: 29px;
+        left: 50px;
+        top: 90px;
+    
+        font-weight: 700;
+        font-size: 2rem;
+    }
+    .symbol {
+        font-size: 2rem;
+        font-weight: 300;
+    }
+    .desc {
+        font-weight: 700;
+        font-size: 2rem;
+    }
+    .title {
+        width: 474px;
+        height: 58px;
+        left: 50px;
+        top: 150px;
+        font-weight: 700;
+        font-size: 4.2rem;
+    }
+    .form-del {
+        width: 380px;
+        height: 180px;
+        left: 580px;
+        top: 243px;
+    }
+    .text-del {
+        font-weight: 700;
+        font-size: 24px;
+        margin-left: 100px;
+        margin-top: 18px;
+    }
+    .id-del {
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 29px;
+        top:77px;
+        left: 21px;
+    }
+    .del-input {
+        width: 220px;
+        height: 39px;
+        top: 72px;
+        left: 120px;
+        font-size: 2rem;
+        font-weight: 500;
+    }
+    .btn-del {
+        width: 160px;
+        height: 44px;
+        top: 126px;
+        left: 120px;
+        font-size: 22px;
+    }
+    
+    .form-add{
+        width: 440px;
+        height: 390px;
+        left: 70px;
+        top: 230px;
+    }
+    .form-group1 {
+        margin-top: 22px;
+        margin-left: 20px;
+    }
+    .user-text {
+        font-weight: 700;
+        font-size: 2rem;
+        line-height: 3.4rem;
+    }
+    .form-control1 {
+        width: 245px;
+        height: 38px;
+        margin-right: 40px;
+        font-size: 2.2rem;
+        font-weight: 500;
+    }
+    .btn-add {
+        width: 165px;
+        height: 44px;
+        margin-left: 156px;
+        margin-top: 22px;
+        font-size: 2.2rem;
+        font-weight: 600;
+    }
+    .action {
+        font-size: 2.2rem;
+    }
+    .tbl {
+        width: 1100px;
+        height: 183px;
+        left: 60px;
+        top: 680px;
+    }
+    /* Table */
+    table{
+        width: 900px;
+    }
+    thead tr th {
+        font-weight: 500;
+        font-size: 2.2rem;
+    }
+    tbody tr td {
+        font-weight: 400;
+        font-size: 2.2rem;
+    }
+    .export-ex {
+        width: 210px;
+        height: 60px;
+        top: 480px;
+        left: 680px;
+        font-weight: 700;
+        font-size: 2.6rem;
+        line-height: 5.6rem;
+    }
+}
+ /* Mobile */
+ @media (max-width: 739px) {
+    .header {
+        height: 500px;
+    }
+    .content {
+        height: 160px;
+    }
+    a.control {
+        width: 100px;
+        height: 29px;
+        left: 10px;
+        top: 10px;
+    
+        font-weight: 700;
+        font-size: 1.6rem;
+    }
+    div.control {
+        height: 29px;
+        left: 10px;
+        top: 40px;
+    
+        font-weight: 700;
+        font-size: 1.6rem;
+    }
+    .symbol {
+        font-size: 1.6rem;
+        font-weight: 300;
+    }
+    .desc {
+        font-weight: 700;
+        font-size: 1.6rem;
+    }
+    .title {
+        width: 474px;
+        height: 58px;
+        left: 20px;
+        top: 70px;
+        font-weight: 700;
+        font-size: 3.2rem;
+    }
+    .form-del {
+        width: 200px;
+        height: 130px;
+        left: 270px;
+        top: 145px;
+    }
+    .text-del {
+        font-weight: 700;
+        font-size: 1.6rem;
+        margin-left: 40px;
+        margin-top: 10px;
+    }
+    .id-del {
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        top: 46px;
+        left: 10px;
+    }
+    .del-input {
+        width: 100px;
+        height: 20px;
+        top: 46px;
+        left: 80px;
+        font-size: 1.4rem;
+        font-weight: 400;
+        padding: 2px 4px;
+        border-radius: 8px;
+    }
+    .btn-del {
+        width: 100px;
+        height: 30px;
+        top: 90px;
+        left: 50px;
+        font-size: 1.6rem;
+    }
+    
+    .form-add{
+        width: 230px;
+        height: 200px;
+        left: 20px;
+        top: 130px;
+    }
+    .form-group1 {
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    .user-text {
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        padding: 2px 2px;
+    }
+    .form-control1 {
+        width: 110px;
+        height: 20px;
+        margin-right: 10px;
+        font-size: 1.5rem;
+        font-weight: 400;
+        padding: 2px 4px;
+        border-radius: 8px;
+    }
+    .btn-add {
+        width: 80px;
+        height: 24px;
+        margin-left: 70px;
+        margin-top: 2px;
+        font-size: 1.6rem;
+        font-weight: 500;
+        line-height: 1.6rem;
+    }
+    .tbl {
+        width: 500px;
+        height: 133px;
+        left: 20px;
+        top: 400px;
+    }
+    /* Table */
+    table{
+        width: 450px;
+    }
+    thead tr th {
+        font-weight: 400;
+        font-size: 1.4rem;
+    }
+    tbody tr td {
+        font-weight: 300;
+        font-size: 1.4rem;
+    }
+    .export-ex {
+        width: 110px;
+        height: 30px;
+        top: 300px;
+        left: 310px;
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 3rem;
+    }
+}
+    

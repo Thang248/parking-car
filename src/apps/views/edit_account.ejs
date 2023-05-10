@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('head'); -%>
+		<link rel="stylesheet" href="/static/css/edit_account.css" />
+	</head>
+    <body>
+        <header class="header">
+        </header>
+        <a href="/account" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý tài khoản</span>
+            <span class="symbol">/</span>
+            <span class="desc">Sửa tài khoản</span>
+        </div>
+        <div class="title">Sửa tài khoản</div>
+        <% if(error) {%>
+            <div class="alert alert-danger"><%=error%></div>
+        <%}%>
+        
+        <form method="post" class="form-add">
+            <fieldset>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Họ và tên</label>
+                    <input
+                        required
+                        class="form-control1"
+                        name="full_name"
+                        type="text"
+                        value="<%= user.full_name%>"
+                    />
+                </div>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Tên đăng nhập</label>
+                    <input
+                        required
+                        class="form-control1"
+                        name="username"
+                        type="text"
+                        value="<%= user.user_name%>"
+                    />
+                </div>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Mật khẩu</label>
+                    <input
+                        required
+                        class="form-control1"
+                        name="pass"
+                        type="password"
+                        value="<%= user.password%>"
+                    />
+                </div>
+                
+                
+                <button type="submit" class="btn btn-add">
+                    Sửa
+                </button>
+            </fieldset>
+        </form>
+
+        </div>
+    </body>
+    

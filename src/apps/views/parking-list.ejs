@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('head'); -%>
+		<link rel="stylesheet" href="/static/css/parking-list.css" />
+	</head>
+    <body>
+        <%- include('logout'); -%>
+
+        <header class="header">
+        </header>
+        <div class="content">
+        </div>
+        <a href="/" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div href="/" class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý bãi xe</span>
+        </div>
+
+        <div class="title">Danh sách bãi xe</div>
+        <a href="/parking-list/add" class="btn btn-success btn-add">
+            Thêm mới +
+        </a>
+        <div class="tbl">
+            <table data-toolbar="#toolbar" data-toggle="table">
+                <thead>
+                    <tr>
+                        <th data-sortable="true">STT</th>
+                        <th data-sortable="true">ID</th>
+                        <th data-sortable="true">Tên thiết bị</th>
+                        <th data-sortable="true">Tên bãi xe</th>
+                        <th data-sortable="true">Tên vị trí</th>
+                        <th data-sortable="true">Sửa</th>
+                        <th data-sortable="true">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let i = 0 %> <% for ( let park of park_list) {%>
+                        <tr>
+                            <td><%= ++i %></td>
+                            <td><%= park.parkId%></td>
+                            <%if(park.deviceId !== null) {%>
+                            <td><%= park.deviceId.name %></td>
+                            <%}%>
+                            <%if(park.deviceId === null) {%>
+                            <td>Không có thiết bị nào hoạt động ở cơ sở này</td>
+                            <%}%>
+                            <td><%=park.name%></td>
+                            <td><%=park.address%></td>
+                            <td><a href="/parking-list/edit/<%= park._id%>" class="action">Edit</a></td>
+                            <td><a href="/parking-list/delete/<%= park._id%>" class="action">Delete</a></td>
+                        </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <a href="/parking-list/export" class="export-ex">
+            Xuất file Excel
+        </a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,316 @@
+*{
+	margin:0;
+	padding:0;
+	font-family: Inter;
+	color:#333;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%; /* tương đương 10px */
+    line-height: 1.6rem;
+}
+.header {
+    width: 100%;
+    height: 523px;
+}
+.content {
+    width: 100%;
+    height: 628px;
+    background-color: #318EE3;
+}
+a.control {
+    position: absolute;
+    width: 100px;
+    height: 29px;
+    left: 50px;
+    top: 40px;
+
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #000;
+    text-decoration: none;
+}
+a.control:hover {
+    color: #424141;
+}
+div.control {
+    position: absolute;
+    height: 29px;
+    left: 50px;
+    top: 90px;
+
+    font-weight: 700;
+    font-size: 24px;
+    color: #000000;
+}
+.symbol {
+    font-size: 2.4rem;
+    font-weight: 300;
+}
+.desc {
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #FF6666;
+}
+.title {
+    position: absolute;
+    width: 474px;
+    height: 58px;
+    left: 50px;
+    top: 180px;
+    font-weight: 700;
+    font-size: 4.8rem;
+    
+    color: #000000;
+}
+.btn-add {
+    position: absolute;
+    width: 187px;
+    height: 55px;
+    left: 60px;
+    top: 270px;
+
+    background: #55CE2B;
+    border-radius: 10px;
+    font-size: 2.4rem;
+    line-height: 4rem;
+    font-weight: 600;
+    color: #FFFFFF;
+}
+.action {
+    font-size: 2.4rem;
+    text-decoration: none;
+    color: #07a72f;
+}
+.tbl {
+    position: absolute;
+    width: 1239px;
+    height: 183px;
+    left: 60px;
+    top: 380px;
+    
+}
+/* Table */
+table{
+    border:1px solid black;
+    width: 1239px;
+    text-align: center;
+}
+th{
+    border:1px solid black;
+}
+td{
+    border:1px solid black;
+    background-color: #333;
+}
+thead {
+    background-color: #C61F1F;
+    
+}
+thead tr th {
+    font-weight: 500;
+    font-size: 2.6rem;
+    color: #FFFFFF;
+}
+tbody tr td {
+    font-weight: 400;
+    font-size: 2.6rem;
+
+    color: #ccc;
+}
+.export-ex {
+    width: 258px;
+    height: 63px;
+    position: absolute;
+    top: 924px;
+    left: 540px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 32px;
+    color: #000000;
+    background-color: #60FE46;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 63px;
+}
+.export-ex:hover {
+    background-color: #38cc22;
+    text-decoration: none;
+    color: #333;
+}
+/* BREAK POINT */
+/*
+    PC >= 1024px
+    Tablet: >=740px & < 1024px
+    Mobile: <740px
+ */
+ 
+ /* Mobile and Tablet */
+ @media (max-width: 1023px) {
+    .header {
+        width: 100%;
+        height: 500px;
+    }
+    .content {
+        width: 100%;
+        height: 560px;
+    }
+    a.control {
+        width: 100px;
+        height: 29px;
+        left: 50px;
+        top: 40px;
+    
+        font-weight: 700;
+        font-size: 2.2rem;
+    }
+    div.control {
+        height: 29px;
+        left: 50px;
+        top: 90px;
+    
+        font-weight: 700;
+        font-size: 2rem;
+    }
+    .symbol {
+        font-size: 2rem;
+        font-weight: 300;
+    }
+    .desc {
+        font-weight: 700;
+        font-size: 2rem;
+    }
+    .title {
+        width: 474px;
+        height: 58px;
+        left: 50px;
+        top: 180px;
+        font-weight: 700;
+        font-size: 4.2rem;
+    }
+    .btn-add {
+        width: 160px;
+        height: 45px;
+        left: 60px;
+        top: 270px;
+        font-size: 2.2rem;
+        line-height: 3.6rem;
+        font-weight: 600;
+    }
+    .action {
+        font-size: 2rem;
+    }
+    .tbl {
+        width: 900px;
+        height: 183px;
+        left: 60px;
+        top: 380px;
+        
+    }
+    /* Table */
+    table{
+        width: 860px;
+    }
+    thead tr th {
+        font-weight: 500;
+        font-size: 2rem;
+    }
+    tbody tr td {
+        font-weight: 400;
+        font-size: 2rem;
+    }
+    .export-ex {
+        width: 210px;
+        height: 50px;
+        top: 844px;
+        left: 370px;
+        font-weight: 700;
+        font-size: 2.6rem;
+        border-radius: 20px;
+        line-height: 5rem;
+    }
+}
+ /* Mobile */
+ @media (max-width: 739px) {
+    .header {
+        height: 270px;
+    }
+    .content {
+        height: 280px;
+    }
+    a.control {
+        width: 100px;
+        height: 29px;
+        left: 10px;
+        top: 10px;
+    
+        font-weight: 700;
+        font-size: 1.6rem;
+    }
+    div.control {
+        height: 29px;
+        left: 10px;
+        top: 40px;
+    
+        font-weight: 700;
+        font-size: 1.6rem;
+    }
+    .symbol {
+        font-size: 1.6rem;
+        font-weight: 300;
+    }
+    .desc {
+        font-weight: 700;
+        font-size: 1.6rem;
+    }
+    .title {
+        width: 474px;
+        height: 58px;
+        left: 14px;
+        top: 80px;
+        font-weight: 700;
+        font-size: 3rem;
+    }
+    .btn-add {
+        width: 100px;
+        height: 32px;
+        left: 14px;
+        top: 140px;
+        font-size: 1.6rem;
+        line-height: 2.2rem;
+        font-weight: 600;
+        border-radius: 8px;
+    }
+    .action {
+        font-size: 1.2rem;
+    }
+    .tbl {
+        width: 700px;
+        height: 183px;
+        left: 14px;
+        top: 200px;
+        
+    }
+    /* Table */
+    table{
+        width: 460px;
+    }
+    thead tr th {
+        font-weight: 400;
+        font-size: 1.2rem;
+    }
+    tbody tr td {
+        font-weight: 300;
+        font-size: 1.2rem;
+    }
+    .export-ex {
+        width: 140px;
+        height: 30px;
+        top: 420px;
+        left: 170px;
+        font-weight: 600;
+        font-size: 1.6rem;
+        border-radius: 20px;
+        line-height: 3rem;
+    }
+ }

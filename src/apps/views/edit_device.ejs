@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('head'); -%>
+		<link rel="stylesheet" href="/static/css/edit_park.css" />
+	</head>
+    <body>
+        <header class="header">
+        </header>
+        <a href="/device" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý thiết bị</span>
+            <span class="symbol">/</span>
+            <span class="desc">Sửa thiết bị</span>
+        </div>
+        <div class="title">Sửa thiết bị</div>
+        <% if(error) {%>
+            <div class="alert alert-danger"><%=error%></div>
+        <%}%>
+        
+        <form method="post" class="form-add">
+            <fieldset>
+                <div class="form-group1">
+                    <label for="text" class="user-text">ID thiết bị</label>
+                    <input
+                        required
+                        class="form-control1"
+                        name="id"
+                        type="text"
+                        value="<%= device.id%>"
+                    />
+                </div>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Tên thiết bị</label>
+                    <input
+                        required
+                        class="form-control1"
+                        name="name"
+                        type="text"
+                        value="<%= device.name%>"
+
+                    />
+                </div>
+ 
+                <button type="submit" class="btn btn-add">
+                    Thêm
+                </button>
+            </fieldset>
+        </form>
+
+        </div>
+    </body>
+    

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/blob-polyfill/2.0.20171115/Blob.min.js"></script>
+        <%- include('head'); -%>
+		<link rel="stylesheet" href="/static/css/car.css" />
+	</head>
+    <body>
+        <%- include('logout'); -%>
+
+        <header class="header">
+        </header>
+        <div class="content">
+        </div>
+        <a href="/" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div href="/" class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý ra vào</span>
+        </div>
+
+        <div class="title">Danh sách xe ra vào</div>
+        <form id="filter-address">
+            <select id="address-filter">
+                <option value="">Tất cả</option>
+                <% parks.forEach(function(parking) { %>
+                    <option value="<%= parking.address %>"><%= parking.address %></option>
+                <% }); %>
+            </select>
+        </form>
+
+        <div class="tbl">
+            <table data-toolbar="#toolbar" data-toggle="table">
+                <thead>
+                    <tr>
+                        <th data-sortable="true">Hình ảnh vào</th>
+                        <th data-sortable="true">Hình ảnh ra</th>
+                        <th data-sortable="true">Tên cơ sở</th>
+                        <th data-sortable="true">Tên thẻ</th>
+                        <th data-sortable="true">Thời gian vào</th>
+                        <th data-sortable="true">Thời gian ra</th>
+                        <th data-sortable="true">Biển số xe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% vehicles.forEach(function(vehicle) { %>
+                        <tr>
+                            <td>
+                                <img src="<%= vehicle.image_in%>" class="imgs"/>
+                            </td>
+
+                            <td>
+                                <img src="<%= vehicle.image_out%>" class="imgs" alt="Ảnh ra"/>
+                            </td>
+
+                            <td><%= vehicle.parking_id.address %></td>      
+                            
+                            <td><%= vehicle.card_id.full_name %></td>
+                        
+                            <td><%= vehicle.timeIn %></td>
+
+                            <td><%= vehicle.timeOut %></td>
+
+                            <%if(vehicle.card_id.full_name !== "Khách vãng lai") {%>
+                                <td><%= vehicle.card_id.license %></td>
+                            <%}%>
+                        </tr>
+                        <% }); %>
+                    
+                </tbody>
+            </table>
+        </div>
+        <%- include('pagination-car'); -%>
+        <!-- <a href="" class="export-ex">
+            Xuất file Excel
+        </a> -->
+        </div>
+    </body>
+    <script>
+        const selectBox = document.getElementById('address-filter');
+        selectBox.addEventListener('change', () => {
+            const address = selectBox.value;
+            const rows = document.querySelectorAll('.tbl table tbody tr');
+            rows.forEach(row => {
+                const rowAddress = row.querySelector('td:nth-child(3)').textContent;
+                if (address === '' || rowAddress === address) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</html>

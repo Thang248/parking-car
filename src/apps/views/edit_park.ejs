@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('head'); -%>
+		<link rel="stylesheet" href="/static/css/edit_park.css" />
+	</head>
+    <body>
+        <header class="header">
+        </header>
+        <a href="/parking-list" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý bãi xe</span>
+            <span class="symbol">/</span>
+            <span class="desc">Sửa bãi xe</span>
+        </div>
+        <div class="title">Sửa bãi xe</div>
+        <% if(error) {%>
+            <div class="alert alert-danger"><%=error%></div>
+        <%}%>
+        
+        <form method="post" class="form-add">
+            <fieldset>
+                <div class="form-group1">
+                    <label for="text" class="user-text">ID bãi gửi xe</label>
+                    <input
+                        required
+                        class="form-control1"
+                        name="id"
+                        type="text"
+                        value="<%= park.parkId%>"
+                    />
+                </div>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Tên bãi xe</label>
+                    <input
+                        required
+                        class="form-control1"
+                        name="name"
+                        type="text"
+                        value="<%= park.name%>"
+                    />
+                </div>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Tên vị trí</label>
+                    <input
+                        required
+                        class="form-control1"
+                        name="address"
+                        type="text"
+                        value="<%= park.address%>"
+                    />
+                </div>
+                
+                <div class="form-group1">
+                    <label for="text" class="user-text">Thiết bị hoạt động</label>
+                    <select name="device_id" class="form-control1">
+                        <option value="0">Không thay đổi thiết bị</option>
+                        <% let i = 0 %> <% for ( let device of devices) {%>
+                            <%if(device.isActivate === false) {%>
+                                <option value="<%= device._id %>"><%=device.name%></option>
+                            <%}%>
+                        <%}%>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-add">
+                    Sửa
+                </button>
+            </fieldset>
+        </form>
+
+        </div>
+    </body>
+    

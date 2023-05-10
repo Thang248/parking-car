@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('head'); -%>
+		<link rel="stylesheet" href="/static/css/card.css" />
+	</head>
+    <body>
+        <%- include('logout'); -%>
+
+        <header class="header">
+        </header>
+        <div class="content">
+        </div>
+        <a href="/" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div href="/" class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý thẻ</span>
+        </div>
+
+        <div class="title">Danh sách thẻ</div>
+        <% if(error) {%>
+            <div class="alert alert-danger"><%=error%></div>
+        <%}%>
+        
+        <form method="post" class="form-add" id="form-add" enctype="application/json">
+            <fieldset>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Mã thẻ</label>
+                    <input
+                        required
+                        class="form-control1"
+                        name="id_"
+                        type="text"
+                    />
+                </div>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Họ Tên</label>
+                    <input
+                        class="form-control1"
+                        name="full_name"
+                        type="text"
+                    />
+                </div>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Loại thẻ</label>
+                    <input
+                        class="form-control1"
+                        name="role"
+                        type="text"
+                    />
+                </div>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Biển số xe</label>
+                    <input
+                        class="form-control1"
+                        name="license"
+                        type="text"
+                    />
+                </div>
+                <div class="form-group1">
+                    <label for="text" class="user-text">Trạng thái</label>
+                    <select name="is_active" class="form-control1">
+                        <option value="1">Kích hoạt</option>
+                        <option value="0">Chưa kích hoạt</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-add">
+                    Cập nhật
+                </button>
+            </fieldset>
+        </form>
+
+
+        <form method="post" class="form-del" id="form-del1" enctype="application/json">
+            <p class="text-del">Xóa thông tin thẻ</p>
+            <label class="id-del">Mã Thẻ</label>
+            <input name="id1" required id="id1" class="del-input" type="text" >
+            <button type="submit" class="btn btn-danger btn-del">
+                Xóa
+            </button>
+        </form>
+
+        <div class="tbl">
+            <table data-toolbar="#toolbar" data-toggle="table">
+                <thead>
+                    <tr>
+                        <th data-sortable="true">STT</th>
+                        <th data-sortable="true">Mã thẻ</th>
+                        <th data-sortable="true">Họ và tên</th>
+                        <th data-sortable="true">Ngày Active</th>
+                        <th data-sortable="true">Biển số xe</th>
+                        <th data-sortable="true">Loại thẻ</th>
+                        <th data-sortable="true">Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let i = 0 %> <% for ( let card of cards) {%>
+                        <tr>
+                            <td><%= ++i %></td>
+
+                            <td><%=card.id%></td>
+
+                            <td><%=card.full_name%></td>
+
+                            <% if(card.activeAt !== null){ %>
+                                <td><%=card.activeAt%></td>
+                            <%}%>
+                            
+                            <td><%= card.license%></td>
+                            
+                            <td><%= card.role%></td>
+                        
+                            
+                            
+                            <% if(card.status === true){ %>
+                            <td>Kích hoạt</td>
+                            <%}%>
+                            <% if(card.status === false){ %>
+                            <td>Chưa kích hoạt</td>
+                            <%}%>
+                        </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <%- include('pagination'); -%>
+
+        <a href="/card/export" class="export-ex">
+            Xuất file Excel
+        </a>
+        </div>
+    </body>
+    <script>
+    const form = document.getElementById('form-del1');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const jsonData = {};
+        formData.forEach(function(value, key) {
+            jsonData[key] = value;
+        })
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/card/remove-card');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(jsonData));
+        
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                // console.log(this.responseText)
+                location.reload(true);
+                // if(this.responseText === "success") alert("Xóa thẻ thành công");
+                // else if(this.responseText === "fail") alert("Không tìm thấy thẻ cần xóa");
+            }
+        };
+
+    });
+
+
+    const addForm = document.getElementById('form-add');
+    addForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(addForm);
+        const jsonData = {};
+        formData.forEach(function(value, key) {
+            jsonData[key] = value;
+        })
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/card/add-card');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(jsonData));
+        
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                location.reload(true);
+            }
+        };
+
+    });
+
+
+    </script>
+</html>

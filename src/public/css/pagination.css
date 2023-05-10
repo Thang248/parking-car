@@ -1,0 +1,60 @@
+.panel-footer {
+    font-size: 20px;
+    position: absolute;
+    left: 560px;
+    top: 980px;
+}
+.panel-footer.panel1 {
+    left: 560px;
+    top: 1200px;
+}
+.logout{
+    font-size: 24px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+    color: black;
+}
+.logout:hover {
+    text-decoration: none;
+    color: #ccc;
+}
+/* BREAK POINT */
+/*
+    PC >= 1024px
+    Tablet: >=740px & < 1024px
+    Mobile: <740px
+ */
+ /* Mobile and Tablet */
+ @media (max-width: 1023px) {
+    .panel-footer {
+        font-size: 20px;
+        left: 440px;
+        top: 930px;
+    }
+    .panel-footer.panel1 {
+        left: 440px;
+        top: 1000px;
+    }
+    .logout{
+        font-size: 18px;
+    }
+ }
+ 
+ /* Mobile */
+ @media (max-width: 739px) {
+    .panel-footer {
+        font-size: 12px;
+        left: 200px;
+        top: 560px;
+    }
+    .panel-footer.panel1 {
+        left: 200px;
+        top: 650px;
+    }
+    .logout{
+        font-size: 14px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+ }

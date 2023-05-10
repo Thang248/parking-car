@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <%- include('head'); -%>
+		<link rel="stylesheet" href="/static/css/account.css" />
+        
+	</head>
+    <body>
+        <%- include('logout'); -%>
+        <header class="header">
+        </header>
+        <div class="content">
+        </div>
+        <a href="/" class="control">
+            <img src="/static/images/back.png" alt="">
+            Trở lại
+        </a>
+        <div href="/" class="control">
+            <img src="/static/images/home.png" alt="" class="mb-2">
+            Home
+            <span class="symbol">/</span>
+            <span class="desc">Quản lý tài khoản</span>
+        </div>
+
+        <div class="title">Danh sách tài khoản</div>
+
+        <a href="/account/add" class="btn btn-success btn-add">
+            Thêm mới +
+        </a>
+
+        <div class="tbl">
+            <table data-toolbar="#toolbar" data-toggle="table">
+                <thead>
+                    <tr>
+                        <th data-sortable="true">STT</th>
+                        <th data-sortable="true">Tên đăng nhập</th>
+                        <th data-sortable="true">Họ và Tên</th>
+                        <th data-sortable="true">Sửa</th>
+                        <th data-sortable="true">Xóa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let i = 0 %> <% for ( let user of users) {%>
+                        <tr>
+                            <td><%= ++i %></td>
+                            <td><%=user.user_name%></td>
+                            <td><%=user.full_name%></td>
+                            <td><a href="/account/edit/<%= user._id%>" class="action">Edit</a></td>
+                            <td><a href="/account/delete/<%= user._id%>" class="action">Delete</a></td>
+                        </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <%- include('pagination')%>
+        <a href="/account/export" class="export-ex">
+            Xuất file Excel
+        </a>
+        </div>
+    </body>
+</html>
