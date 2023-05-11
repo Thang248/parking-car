@@ -55,37 +55,27 @@ const checkApi = async(req, res) => {
         }
         //Trường hợp xe vào
         if(card.is_parking === false) {
-            try {
-                const imageUrl = 'https://static.tuoitre.vn/tto/i/s626/2017/03/24/bc29716f.jpg'
-                const response = await axios({
-                  method: 'GET',
-                  url: imageUrl,
-                  responseType: 'stream'
-                });
-                // Tạo tên tệp bằng 1 id ngẫu nhiên
-                const min = Math.pow(10, 9);  // 10^9: giá trị tối thiểu (1 chữ số)
-                const max = Math.pow(10, 10) - 1;  // 10^10 - 1: giá trị tối đa (10 chữ số)
-                
-                const fileName = `${Math.floor(Math.random() * (max - min + 1)) + min}.jpg`;
+            const imageUrl = 'https://static.tuoitre.vn/tto/i/s626/2017/03/24/bc29716f.jpg'
+            const response = await axios({
+                method: 'GET',
+                url: imageUrl,
+                responseType: 'stream'
+            });
+            // Tạo tên tệp bằng 1 id ngẫu nhiên
+            const min = Math.pow(10, 9);  // 10^9: giá trị tối thiểu (1 chữ số)
+            const max = Math.pow(10, 10) - 1;  // 10^10 - 1: giá trị tối đa (10 chữ số)
+            
+            const fileName = `${Math.floor(Math.random() * (max - min + 1)) + min}.jpg`;
 
-                // Tạo một Write Stream để lưu ảnh
-                const filePath = `${uploadPath}${fileName}`;
-                console.log(filePath)
-                const writer = fs.createWriteStream(filePath);
+            // Tạo một Write Stream để lưu ảnh
+            const filePath = `${uploadPath}${fileName}`;
+            const writer = fs.createWriteStream(filePath);
 
-                // Lưu dữ liệu từ response vào file
-                response.data.pipe(writer);
+            // Lưu dữ liệu từ response vào file
+            response.data.pipe(writer);
+    
+            
 
-                // Xử lý sự kiện khi tải xuống hoàn thành
-                return new Promise((resolve, reject) => {
-                writer.on('finish', resolve);
-                writer.on('error', reject);
-                });
-            }
-            catch (error) {
-                console.error('Lỗi khi tải xuống và lưu ảnh:', error);
-                throw error;
-            }
             if(card.full_name !== "Khách vãng lai") {
                 ///// Trường hợp khách đã đăng kí nhưng chưa kích hoạt
                 if(card.status === false) {
@@ -137,36 +127,24 @@ const checkApi = async(req, res) => {
         // Trường hợp xe ra
         else {
             /// Lấy ảnh từ API xe ra
-            try {
-                const imageUrl = '190...'
-                const response = await axios({
-                  method: 'GET',
-                  url: imageUrl,
-                  responseType: 'stream'
-                });
-                // Tạo tên tệp bằng 1 id ngẫu nhiên
-                const min = Math.pow(10, 9);  // 10^9: giá trị tối thiểu (1 chữ số)
-                const max = Math.pow(10, 10) - 1;  // 10^10 - 1: giá trị tối đa (10 chữ số)
-                
-                const fileName = `${Math.floor(Math.random() * (max - min + 1)) + min}.jpg`;
+            const imageUrl = 'https://static.tuoitre.vn/tto/i/s626/2017/03/24/bc29716f.jpg'
+            const response = await axios({
+                method: 'GET',
+                url: imageUrl,
+                responseType: 'stream'
+            });
+            // Tạo tên tệp bằng 1 id ngẫu nhiên
+            const min = Math.pow(10, 9);  // 10^9: giá trị tối thiểu (1 chữ số)
+            const max = Math.pow(10, 10) - 1;  // 10^10 - 1: giá trị tối đa (10 chữ số)
+            
+            const fileName = `${Math.floor(Math.random() * (max - min + 1)) + min}.jpg`;
 
-                // Tạo một Write Stream để lưu ảnh
-                const filePath = `${uploadPath}${fileName}`;
-                const writer = fs.createWriteStream(filePath);
+            // Tạo một Write Stream để lưu ảnh
+            const filePath = `${uploadPath}${fileName}`;
+            const writer = fs.createWriteStream(filePath);
 
-                // Lưu dữ liệu từ response vào file
-                response.data.pipe(writer);
-
-                // Xử lý sự kiện khi tải xuống hoàn thành
-                return new Promise((resolve, reject) => {
-                writer.on('finish', resolve);
-                writer.on('error', reject);
-                });
-            }
-            catch (error) {
-                console.error('Lỗi khi tải xuống và lưu ảnh:', error);
-                throw error;
-            }
+            // Lưu dữ liệu từ response vào file
+            response.data.pipe(writer);
 
             const parkIn = await VehiclesModel.findOne({card_id: card._id}).sort({updatedAt: -1}).limit(1)
            
