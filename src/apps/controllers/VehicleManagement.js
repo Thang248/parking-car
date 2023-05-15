@@ -49,13 +49,13 @@ const checkApi = async(req, res) => {
         const device = await DevicesModel.findOne({id: deviceId})
         const park = await ParksModel.findById(device.parkId)
         if(!card) {
-            return res.status(401).json({
+            return res.status(404).json({
                 message: "Thông tin thẻ không hợp lệ"
             })
         }
         //Trường hợp xe vào
         if(card.is_parking === false) {
-            const imageUrl = 'https://static.tuoitre.vn/tto/i/s626/2017/03/24/bc29716f.jpg'
+            const imageUrl = 'https://aphoto.vn/wp-content/uploads/2020/04/anh-dep-jpg-fujifilm-1.jpg'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
@@ -127,7 +127,7 @@ const checkApi = async(req, res) => {
         // Trường hợp xe ra
         else {
             /// Lấy ảnh từ API xe ra
-            const imageUrl = 'https://static.tuoitre.vn/tto/i/s626/2017/03/24/bc29716f.jpg'
+            const imageUrl = 'https://aphoto.vn/wp-content/uploads/2020/04/anh-dep-jpg-fujifilm-1.jpg'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
