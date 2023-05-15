@@ -9,7 +9,7 @@ const indexDevices = async (req, res) => {
     }
     const noPage = (pagination.perPage * pagination.page) - pagination.perPage
     try {
-        const devices = await DevicesModel.find().skip(noPage).limit(pagination.perPage).populate('parkId')
+        const devices = await DevicesModel.find().skip(noPage).limit(pagination.perPage).populate('parkId').sort({ updatedAt: -1 })
         const parks = await ParksModel.find()
         const countDevices = await DevicesModel.countDocuments()
         res.render('device', {

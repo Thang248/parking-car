@@ -16,7 +16,7 @@ const indexVehicle = async (req, res) => {
     }
     const noPage = (pagination.perPage * pagination.page) - pagination.perPage
     try {
-        const vehicles = await VehiclesModel.find().skip(noPage).limit(pagination.perPage).populate('card_id').populate('parking_id');
+        const vehicles = await VehiclesModel.find().skip(noPage).limit(pagination.perPage).populate('card_id').populate('parking_id').sort({ updatedAt: -1 });
         const countVehicles = await VehiclesModel.countDocuments()
         const cards = await CardsModel.find()
         const parks = await ParksModel.find()
@@ -34,6 +34,43 @@ const indexVehicle = async (req, res) => {
         console.log(error);
     }
 }
+
+// Hàm xóa tài liệu và ảnh
+const deleteOldDocuments = async () => {
+    try {
+        // Đếm số lượng xe ra vào
+        const countVehicles = await VehiclesModel.countDocuments();
+
+        // Nếu số lượng xe ra vào vượt quá giới hạn
+        if(countVehicles > 20) {
+            const oldVehicles = await VehiclesModel.find().sort({ updatedAt: 1 }).limit(countVehicles - 20);
+            oldVehicles.forEach(async (document) => {
+                await VehiclesModel.findByIdAndDelete(document._id)
+
+                // Xóa ảnh từ folder uploads
+                const imagePathIn = `./src/apps${document.image_in}`;
+                const imagePathOut = `./src/apps${document.image_out}`;
+
+                fs.unlink(imagePathIn, (err) => {
+                    if (err) {
+                      console.error('Lỗi xóa ảnh vào:', err);
+                    }
+                  });
+                fs.unlink(imagePathOut, (err) => {
+                if (err) {
+                    console.error('Lỗi xóa ảnh ra:', err);
+                }
+                });
+            })
+
+        }
+        
+    }
+    catch(error) {
+        console.error('Lỗi khi kiểm tra và xóa tài liệu cũ:', error);
+    }
+}
+deleteOldDocuments()
 
 const checkApi = async(req, res) => {
     try {
