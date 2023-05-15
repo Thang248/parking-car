@@ -11,7 +11,7 @@ const indexCard = async (req, res) => {
     }
     const noPage = (pagination.perPage * pagination.page) - pagination.perPage
     try {
-        const cards = await CardsModel.find().skip(noPage).limit(pagination.perPage);
+        const cards = await CardsModel.find().skip(noPage).limit(pagination.perPage).sort({ updatedAt: -1 });
         const countCards = await CardsModel.countDocuments()
         res.render('card', {
             cards: cards,
