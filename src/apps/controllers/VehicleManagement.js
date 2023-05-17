@@ -70,7 +70,6 @@ const deleteOldDocuments = async () => {
         console.error('Lỗi khi kiểm tra và xóa tài liệu cũ:', error);
     }
 }
-deleteOldDocuments()
 
 const checkApi = async(req, res) => {
     try {
@@ -92,7 +91,7 @@ const checkApi = async(req, res) => {
         }
         //Trường hợp xe vào
         if(card.is_parking === false) {
-            const imageUrl = 'https://aphoto.vn/wp-content/uploads/2020/04/anh-dep-jpg-fujifilm-1.jpg'
+            const imageUrl = 'http://192.168.137.221:8292/capture?_cb=1:'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
@@ -136,6 +135,7 @@ const checkApi = async(req, res) => {
                     await CardsModel.findOneAndUpdate({id: cardId}, {
                         is_parking: true
                     })
+                    deleteOldDocuments()
                     res.status(200).json({
                         message: "Gửi xe thành công"
                     })
@@ -156,6 +156,7 @@ const checkApi = async(req, res) => {
                 await CardsModel.findOneAndUpdate({id: cardId}, {
                     is_parking: true
                 })
+                deleteOldDocuments()
                 res.status(200).json({
                     message: "Gửi xe thành công"
                 })
@@ -164,7 +165,7 @@ const checkApi = async(req, res) => {
         // Trường hợp xe ra
         else {
             /// Lấy ảnh từ API xe ra
-            const imageUrl = 'https://aphoto.vn/wp-content/uploads/2020/04/anh-dep-jpg-fujifilm-1.jpg'
+            const imageUrl = 'http://192.168.137.90:8292/capture?_cb=1:'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
@@ -201,6 +202,8 @@ const checkApi = async(req, res) => {
                 await CardsModel.findOneAndUpdate({id: cardId}, {
                     is_parking: false
                 })
+                deleteOldDocuments()
+
                 res.status(200).json({
                     message: "Xe ra thành công"
                 })
