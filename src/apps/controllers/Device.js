@@ -129,7 +129,7 @@ const exportEx = async (req, res) => {
         });
         
         // Lưu workbook ra file excel
-        const filename = 'park-list.xlsx';
+        const filename = 'devices.xlsx';
         workbook.xlsx.writeFile(filename)
           .then(() => {
             console.log(`Excel file "${filename}" has been created`);
@@ -142,10 +142,10 @@ const exportEx = async (req, res) => {
       .catch(error => {
         console.log(error);
       });
-      res.redirect('/parking-list')
+      res.redirect('/device')
     }
     catch (error) {
-        res.render('parking-list', {
+        res.render('device', {
             error: error.message,
             message: null,
         })

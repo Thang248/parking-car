@@ -55,7 +55,6 @@ const newCards = async (req, res) => {
             })
             const saveCard = await createCard.save();
             res.redirect('/card')
-
         }
         else {
             const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -129,6 +128,7 @@ const exportEx = async (req, res) => {
         { header: 'Mã thẻ', key: 'id', width: 15 },
         { header: 'Tên', key: 'name', width: 30 },
         { header: 'Ngày kích hoạt', key: 'activeDate', width: 30 },
+        { header: 'Biển số xe', key: 'license', width: 30 },
         { header: 'Loại thẻ', key: 'role', width: 15 },
         { header: 'Trạng thái', key: 'status', width: 30 }
     ];
@@ -140,6 +140,7 @@ const exportEx = async (req, res) => {
             id: item.id,
             name: item.full_name,
             activeDate: item.activeAt,
+            license: item.license,
             role: item.role,
             status: item.status.toString()
           });

@@ -1,0 +1,39 @@
+<!-- Script để kết nối và nhận tin nhắn từ Socket.IO -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.min.js"></script>
+<script>
+  const socket = io();
+
+  socket.on('notification', (cardId) => {
+    showNotification(cardId);
+  });
+
+  function showNotification(cardId) {
+    const confirmation = confirm(`Bạn có muốn thêm thẻ này vào không: ${cardId}`);
+    
+    if (confirmation) {
+        addCard(true, cardId);
+    } else {
+        addCard(false, cardId);
+    }
+  }
+
+  function addCard(choice, cardId) {
+    if(choice === true) {
+        // Chuẩn bị dữ liệu để gửi đi
+        const data = { id_: cardId };
+        // Gửi yêu cầu POST bằng fetch
+        fetch('/card/add-card', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(response => window.location.href = '/card')
+        .catch(error => {
+          // Xử lý lỗi (nếu có)
+          console.error('Error:', error);
+        });
+    }
+  }
+</script>
