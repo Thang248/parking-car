@@ -16,7 +16,7 @@ const indexVehicle = async (req, res) => {
     }
     const noPage = (pagination.perPage * pagination.page) - pagination.perPage
     try {
-        const vehicles = await VehiclesModel.find().skip(noPage).limit(pagination.perPage).populate('card_id').populate('parking_id').sort({ updatedAt: -1 });
+        const vehicles = await VehiclesModel.find().skip(noPage).limit(pagination.perPage).sort({ updatedAt: -1 });
         const countVehicles = await VehiclesModel.countDocuments()
         const cards = await CardsModel.find()
         const parks = await ParksModel.find()
@@ -93,7 +93,7 @@ const checkApi = async(req, res) => {
         }
         //Trường hợp xe vào
         if(card.is_parking === false) {
-            const imageUrl = 'http://192.168.137.221:8292/capture?_cb=1:'
+            const imageUrl = 'https://www.thegioimaychu.vn/blog/wp-content/uploads/2019/02/google-photos-logo1.jpg'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
@@ -125,49 +125,55 @@ const checkApi = async(req, res) => {
                 ///// Trường hợp khách đã đăng kí và đã kích hoạt
                 else {
                     const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
-
-                    const vehicle = await VehiclesModel.create({
-                        image_in: `/uploads/${fileName}`,
-                        image_out: null,
-                        parking_id: park._id,
-                        card_id: card._id,
-                        timeIn: currentDateTime,
-                        timeOut: null
-                    })
+                    
                     await CardsModel.findOneAndUpdate({id: cardId}, {
                         is_parking: true
                     })
-                    deleteOldDocuments()
-                    res.status(200).json({
-                        message: "Gửi xe thành công"
-                    })
+                    const newCard = await CardsModel.findOne({id: cardId})
+                    if(newCard) {
+                        const vehicle = await VehiclesModel.create({
+                            image_in: `/uploads/${fileName}`,
+                            image_out: null,
+                            parking_id: park,
+                            card_id: newCard,
+                            timeIn: currentDateTime,
+                            timeOut: null
+                        })
+                        deleteOldDocuments()
+                        return res.status(200).json({
+                            message: "Gửi xe thành công"
+                        })
+                    }
                 }
             }
             ///// Trường hợp khách vãng lai
             else {
                 const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
 
-                const vehicle = await VehiclesModel.create({
-                    image_in: `/uploads/${fileName}`,
-                    image_out: null,
-                    parking_id: park._id,
-                    card_id: card._id,
-                    timeIn: currentDateTime,
-                    timeOut: null
-                })
                 await CardsModel.findOneAndUpdate({id: cardId}, {
                     is_parking: true
                 })
-                deleteOldDocuments()
-                res.status(200).json({
-                    message: "Gửi xe thành công"
-                })
+                const newCard = await CardsModel.findOne({id: cardId})
+                if(newCard) {
+                    const vehicle = await VehiclesModel.create({
+                        image_in: `/uploads/${fileName}`,
+                        image_out: null,
+                        parking_id: park,
+                        card_id: newCard,
+                        timeIn: currentDateTime,
+                        timeOut: null
+                    })
+                    deleteOldDocuments()
+                    return res.status(200).json({
+                        message: "Gửi xe thành công"
+                    })
+                }
             }
         }
         // Trường hợp xe ra
         else {
             /// Lấy ảnh từ API xe ra
-            const imageUrl = 'http://192.168.137.90:8292/capture?_cb=1:'
+            const imageUrl = 'https://www.thegioimaychu.vn/blog/wp-content/uploads/2019/02/google-photos-logo1.jpg'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
@@ -186,10 +192,9 @@ const checkApi = async(req, res) => {
             // Lưu dữ liệu từ response vào file
             response.data.pipe(writer);
 
-            const parkIn = await VehiclesModel.findOne({card_id: card._id}).sort({updatedAt: -1}).limit(1)
-           
+            const parkIn = await VehiclesModel.findOne({'card_id._id': card._id}).sort({updatedAt: -1}).limit(1)
             ////Trường hợp xe vào ở bãi này nhưng ra ở bãi khác (VD gửi bãi 1 nhưng quẹt thẻ bãi 2)
-            if(!parkIn.parking_id.equals(park._id)) {
+            if(!parkIn.parking_id._id.equals(park._id)) {
                 return res.status(500).json({
                     message: "Xe không được gửi ở bãi này"
                 })
@@ -197,7 +202,7 @@ const checkApi = async(req, res) => {
             else {
                 const currentDateTime = moment().format('YYYY-MM-DD HH:mm:ss');
 
-                const vehicle = await VehiclesModel.findOneAndUpdate({card_id: card._id},{
+                const vehicle = await VehiclesModel.findOneAndUpdate({card_id: card},{
                     image_out: `/uploads/${fileName}`,
                     timeOut: currentDateTime
                 }, { sort: { updatedAt: -1 } })

@@ -68,6 +68,9 @@
                             <%if(vehicle.card_id.full_name !== "Khách vãng lai") {%>
                                 <td><%= vehicle.card_id.license %></td>
                             <%}%>
+                            <%if(vehicle.card_id.full_name === "Khách vãng lai") {%>
+                                <td></td>
+                            <%}%>
                         </tr>
                         <% }); %>
                     

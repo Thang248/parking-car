@@ -9,12 +9,12 @@ const vehicleSchema = new Schema({
         type: String,
     },
     parking_id: {
-        type: mongoose.Types.ObjectId,
-        ref: "park_list"
+        type: Object,
+        require: false
     },
     card_id: {
-        type: mongoose.Types.ObjectId,
-        ref: "cards"
+        type: Object,
+        require: false
     },
     timeIn: {type: Date, default: moment().format('YYYY-MM-DD HH:mm:ss')},
     timeOut: {type: Date, default: moment().format('YYYY-MM-DD HH:mm:ss')}
