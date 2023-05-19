@@ -42,8 +42,8 @@ const deleteOldDocuments = async () => {
         const countVehicles = await VehiclesModel.countDocuments();
 
         // Nếu số lượng xe ra vào vượt quá giới hạn
-        if(countVehicles > 20) {
-            const oldVehicles = await VehiclesModel.find().sort({ updatedAt: 1 }).limit(countVehicles - 20);
+        if(countVehicles > 5) {
+            const oldVehicles = await VehiclesModel.find().sort({ updatedAt: 1 }).limit(countVehicles - 5);
             oldVehicles.forEach(async (document) => {
                 await VehiclesModel.findByIdAndDelete(document._id)
 
