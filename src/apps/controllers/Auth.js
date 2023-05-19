@@ -107,7 +107,6 @@ module.exports = {
     getLogin: getLogin,
     postLogin: postLogin,
     getLogout: getLogout,
-    getLogin: getLogin,
     getRegister: getRegister,
     postRegister: postRegister
 }
