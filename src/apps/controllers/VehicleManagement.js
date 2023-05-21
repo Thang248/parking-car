@@ -93,7 +93,7 @@ const checkApi = async(req, res) => {
         }
         //Trường hợp xe vào
         if(card.is_parking === false) {
-            const imageUrl = 'https://www.thegioimaychu.vn/blog/wp-content/uploads/2019/02/google-photos-logo1.jpg'
+            const imageUrl = 'http://192.168.137.90:8292/capture?_cb=1'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
@@ -173,7 +173,7 @@ const checkApi = async(req, res) => {
         // Trường hợp xe ra
         else {
             /// Lấy ảnh từ API xe ra
-            const imageUrl = 'https://www.thegioimaychu.vn/blog/wp-content/uploads/2019/02/google-photos-logo1.jpg'
+            const imageUrl = 'http://192.168.137.221:8292/capture?_cb=1'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
