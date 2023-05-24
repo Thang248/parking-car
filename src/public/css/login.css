@@ -11,24 +11,24 @@ html {
 }
 
 header {
-    height: 468.81px;
+    height: 300px;
 }
 .content {
-    height: 771.19px;
+    height: 350px;
     background-color: #3F88DF;
 }
 .logo {
-    width: 455px;
-    height: 286.8px;
-    margin-top: 110px;
-    margin-left: 440px;
+    width: 300px;
+    height: 200px;
+    margin-top: 3%;
+    margin-left: 40%;
 }
 .form-group {
     display: flex;
-    width: 900px;
+    width: 65%;
     justify-content: space-between;
-    margin-left: 100px;
-    margin-top: 50px;
+    margin-left: 10%;
+    margin-top: 1%;
 }
 .btn {
     border-radius: 20px;
@@ -37,8 +37,8 @@ header {
     background-color: #58D8B9;
     font-weight: 700;
     font-size: 3.2rem;
-    margin-top: 40px;
-    margin-left: 530px;
+    margin-top: 0.5%;
+    margin-left: 40%;
 }
 label {
     line-height: 8.2rem;
@@ -74,8 +74,8 @@ label {
     font-size: 3.2rem;
     color: #FFFFFF;
     position: absolute;
-    top: 930px;
-    left: 420px;
+    top: 92%;
+    left: 38%;
     text-decoration: none;
 }
 /* BREAK POINT */
@@ -137,12 +137,7 @@ label {
         font-weight: 600;
         padding-left: 50px;
     }
-    .forget {
-        font-size: 2.8rem;
-        top: 810px;
-        left: 610px;
-        text-decoration: none;
-    }
+    
     .no-reg {
         font-weight: 700;
         font-size: 2.8rem;
