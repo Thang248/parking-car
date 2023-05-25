@@ -93,7 +93,7 @@ const checkApi = async(req, res) => {
         }
         //Trường hợp xe vào
         if(card.is_parking === false) {
-            const imageUrl = 'http://192.168.137.90:8292/capture?_cb=1'
+            const imageUrl = 'https://web.hn.ss.bfcplatform.vn/muadienmay/content/article2/3087889034-1620532650.jpg'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
@@ -173,7 +173,7 @@ const checkApi = async(req, res) => {
         // Trường hợp xe ra
         else {
             /// Lấy ảnh từ API xe ra
-            const imageUrl = 'http://192.168.137.221:8292/capture?_cb=1'
+            const imageUrl = 'https://web.hn.ss.bfcplatform.vn/muadienmay/content/article2/3087889034-1620532650.jpg'
             const response = await axios({
                 method: 'GET',
                 url: imageUrl,
