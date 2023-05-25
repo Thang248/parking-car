@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 const db = () => {
-    mongoose.connect('mongodb+srv://dotienthang248:Wl799UJKcWxqvg1K@cluster0.kihgreh.mongodb.net/?retryWrites=true&w=majority', {
+    mongoose.connect('mongodb://0.0.0.0:27017/parking_car', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
