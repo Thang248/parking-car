@@ -14,7 +14,7 @@ header {
     height: 300px;
 }
 .content {
-    height: 350px;
+    height: 360px;
     background-color: #3F88DF;
 }
 .logo {
@@ -91,13 +91,13 @@ label {
         height: 420px;
     }
     .content {
-        height: 760.19px;
+        height: 500px;
     }
     .logo {
         width: 380px;
         height: 210px;
-        margin-top: 80px;
-        margin-left: 330px;
+        margin-top: 10%;
+        margin-left: 35%;
     }
     .form-group {
         display: flex;
@@ -114,7 +114,7 @@ label {
         font-weight: 700;
         font-size: 3rem;
         margin-top: 40px;
-        margin-left: 380px;
+        margin-left: 45%;
     }
     label {
         line-height: 6.4rem;
@@ -142,7 +142,7 @@ label {
         font-weight: 700;
         font-size: 2.8rem;
         top: 810px;
-        left: 290px;
+        left: 42%;
         text-decoration: none;
     }
  }
@@ -204,6 +204,6 @@ label {
         font-weight: 700;
         font-size: 1.8rem;
         top: 580px;
-        left: 220px;
+        left: 60%;
     }
  }
