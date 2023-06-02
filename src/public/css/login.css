@@ -14,7 +14,7 @@ header {
     height: 300px;
 }
 .content {
-    height: 360px;
+    height: 450px;
     background-color: #3F88DF;
 }
 .logo {
@@ -37,7 +37,7 @@ header {
     background-color: #58D8B9;
     font-weight: 700;
     font-size: 3.2rem;
-    margin-top: 0.5%;
+    margin-top: 2%;
     margin-left: 40%;
 }
 label {
@@ -74,7 +74,7 @@ label {
     font-size: 3.2rem;
     color: #FFFFFF;
     position: absolute;
-    top: 92%;
+    top: 100%;
     left: 38%;
     text-decoration: none;
 }
